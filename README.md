@@ -1,6 +1,6 @@
 # Contact
 
-This is a simple contact saving application.
+This is a simple contact saving Java Web application. 
 
 # Used Technology
   
