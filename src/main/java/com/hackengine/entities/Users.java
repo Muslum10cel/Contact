@@ -10,11 +10,10 @@ import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -45,6 +44,8 @@ public class Users implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar joinedDate;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    private List<HomeAddress> homeAddresses;
 
     public Users() {
     }
@@ -101,11 +102,16 @@ public class Users implements Serializable {
         this.username = username;
     }
 
+    public List<HomeAddress> getHomeAddresses() {
+        return homeAddresses;
+    }
+
+    public void setHomeAddresses(List<HomeAddress> homeAddresses) {
+        this.homeAddresses = homeAddresses;
+    }
+
     @Override
     public String toString() {
-        return "User Registered --> "
-                + "[ USERNAME = " + username
-                + ", PASSWORD=" + password
-                + "]";
+        return "Users{" + "ID=" + ID + ", username=" + username + ", password=" + password + ", email=" + email + ", joinedDate=" + joinedDate + ", homeAddresses=" + homeAddresses + '}';
     }
 }
