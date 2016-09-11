@@ -29,9 +29,9 @@ public class Operations {
             openSession();
             saveUserInfo(register);
             System.out.println(register);
-            return "success";
+            return Tags.SUCCESS;
         } catch (Exception e) {
-            return "fail";
+            return Tags.FAIL;
         }
 
     }
@@ -42,10 +42,10 @@ public class Operations {
         if (result != null) {
             if (result.get(0).getPassword().equals(login.getPassword())) {
                 SessionUtils.getSession().setAttribute(Tags.LOGGED_USER, result.get(0));
-                return "success";
+                return Tags.SUCCESS;
             }
         }
-        return "fail";
+        return Tags.FAIL;
     }
 
     private void saveUserInfo(Users u) {

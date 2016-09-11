@@ -89,11 +89,10 @@ public class UserBean implements Serializable {
 
     public String logOut() {
         SessionUtils.getSession().invalidate();
-        return "thanks";
+        return Tags.THANKS;
     }
 
     public void addAddress() {
-        System.out.println(city + "--" + street);
         HomeAddress address = new HomeAddress(country, city, district, street, doorno);
         operations.mapHomeAddressToUser(user, address);
     }

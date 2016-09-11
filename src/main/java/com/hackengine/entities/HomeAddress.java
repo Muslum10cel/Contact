@@ -5,6 +5,8 @@
  */
 package com.hackengine.entities;
 
+import com.hackengine.db.ColumnNames;
+import com.hackengine.db.TableNames;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
  * @author muslumoncel
  */
 @Entity
-@Table(name = "USER_HOME_ADDRESS")
+@Table(name = TableNames.HOME_ADDRESS)
 public class HomeAddress implements Serializable {
 
     @Id
@@ -28,26 +30,26 @@ public class HomeAddress implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
 
-    @Column(name = "COUNTRY", nullable = false, updatable = true)
+    @Column(name = ColumnNames.COUNTRY, nullable = false, updatable = true)
     private String country;
 
-    @Column(name = "CITY", nullable = false, updatable = true)
+    @Column(name = ColumnNames.CITY, nullable = false, updatable = true)
     private String city;
 
-    @Column(name = "DISTRICT", nullable = false, updatable = true)
+    @Column(name = ColumnNames.DISTRICT, nullable = false, updatable = true)
     private String district;
 
-    @Column(name = "STREET", nullable = false, updatable = true)
+    @Column(name = ColumnNames.STREET, nullable = false, updatable = true)
     private String street;
 
-    @Column(name = "DOOR_NO", nullable = false, updatable = true)
+    @Column(name = ColumnNames.DOOR_NO, nullable = false, updatable = true)
     private String doorno;
 
     public HomeAddress() {
     }
-    
+
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = ColumnNames.USER_ID)
     private Users users;
 
     public HomeAddress(String country, String city, String district, String street, String doorno) {
@@ -113,7 +115,7 @@ public class HomeAddress implements Serializable {
     public void setUsers(Users users) {
         this.users = users;
     }
-    
+
     @Override
     public String toString() {
         return "HomeAddress{" + "ID=" + ID + ", country=" + country + ", city=" + city + ", district=" + district + ", street=" + street + ", doorno=" + doorno + '}';

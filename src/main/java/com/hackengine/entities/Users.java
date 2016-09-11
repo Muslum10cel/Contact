@@ -5,6 +5,9 @@
  */
 package com.hackengine.entities;
 
+import com.hackengine.db.ColumnNames;
+import com.hackengine.db.TableNames;
+import com.hackengine.tags.Tags;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
@@ -24,27 +27,27 @@ import javax.persistence.TemporalType;
  * @author muslumoncel
  */
 @Entity
-@Table(name = "USERS")
+@Table(name = TableNames.USER)
 public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
 
-    @Column(name = "USERNAME", length = 20, nullable = false, unique = true, updatable = false)
+    @Column(name = ColumnNames.USERNAME, length = 20, nullable = false, unique = true, updatable = false)
     private String username;
 
-    @Column(name = "PASSWORD", length = 128, nullable = false, updatable = true)
+    @Column(name = ColumnNames.PASSWORD, length = 128, nullable = false, updatable = true)
     private String password;
 
-    @Column(name = "E_MAIL", length = 50, nullable = false, updatable = true, unique = true)
+    @Column(name = ColumnNames.E_MAIL, length = 50, nullable = false, updatable = true, unique = true)
     private String email;
 
-    @Column(name = "JOINED_DATE", length = 11)
+    @Column(name = ColumnNames.JOINED_DATE, length = 11)
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar joinedDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
     private List<HomeAddress> homeAddresses;
 
     public Users() {
