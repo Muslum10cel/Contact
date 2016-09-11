@@ -11,5 +11,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="com.hackengine.entities.Users"/>
         <mapping class="com.hackengine.entities.HomeAddress"/>
+        <mapping class="com.hackengine.entities.OfficeAddress"/>
     </session-factory>
 </hibernate-configuration>

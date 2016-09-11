@@ -6,18 +6,23 @@
 package com.hackengine.entities;
 
 import com.hackengine.db.ColumnNames;
+import com.hackengine.db.TableNames;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author muslumoncel
  */
 @Entity
+@Table(name = TableNames.OFFICE_ADDRESS)
 public class OfficeAddress implements Serializable {
 
     @Id
@@ -38,6 +43,10 @@ public class OfficeAddress implements Serializable {
 
     @Column(name = ColumnNames.DOOR_NO, nullable = false, updatable = true)
     private String doorno;
+
+    @OneToOne
+    @JoinColumn(name = ColumnNames.USER_ID)
+    private Users users;
 
     public OfficeAddress() {
     }
@@ -96,6 +105,14 @@ public class OfficeAddress implements Serializable {
 
     public String getDoorno() {
         return doorno;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     @Override

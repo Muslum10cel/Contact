@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,6 +51,9 @@ public class Users implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
     private List<HomeAddress> homeAddresses;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
+    private OfficeAddress officeAddress;
+    
     public Users() {
     }
 
@@ -113,6 +117,14 @@ public class Users implements Serializable {
         this.homeAddresses = homeAddresses;
     }
 
+    public OfficeAddress getOfficeAddress() {
+        return officeAddress;
+    }
+
+    public void setOfficeAddress(OfficeAddress officeAddress) {
+        this.officeAddress = officeAddress;
+    }
+    
     @Override
     public String toString() {
         return "Users{" + "ID=" + ID + ", username=" + username + ", password=" + password + ", email=" + email + ", joinedDate=" + joinedDate + ", homeAddresses=" + homeAddresses + '}';

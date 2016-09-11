@@ -6,6 +6,7 @@
 package com.hackengine.dboperations;
 
 import com.hackengine.entities.HomeAddress;
+import com.hackengine.entities.OfficeAddress;
 import com.hackengine.entities.Users;
 import com.hackengine.queries.Queries;
 import com.hackengine.tags.Tags;
@@ -60,6 +61,15 @@ public class Operations {
         session.save(address);
         address.setUsers(user);
         user.getHomeAddresses().add(address);
+        session.getTransaction().commit();
+    }
+
+    public void mapOfficeAddressToUser(Users user, OfficeAddress officeAddress) {
+        openSession();
+        session.beginTransaction();
+        session.save(officeAddress);
+        officeAddress.setUsers(user);
+        user.setOfficeAddress(officeAddress);
         session.getTransaction().commit();
     }
 

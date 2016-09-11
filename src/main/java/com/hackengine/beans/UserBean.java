@@ -7,6 +7,7 @@ package com.hackengine.beans;
 
 import com.hackengine.dboperations.Operations;
 import com.hackengine.entities.HomeAddress;
+import com.hackengine.entities.OfficeAddress;
 import com.hackengine.entities.Users;
 import com.hackengine.tags.Tags;
 import com.hackengine.utils.SessionUtils;
@@ -36,6 +37,56 @@ public class UserBean implements Serializable {
     private String street;
 
     private String doorno;
+
+    private String ocountry;
+
+    private String ocity;
+
+    private String odistrict;
+
+    private String ostreet;
+
+    private String odoorno;
+
+    public String getOcountry() {
+        return ocountry;
+    }
+
+    public String getOcity() {
+        return ocity;
+    }
+
+    public String getOdistrict() {
+        return odistrict;
+    }
+
+    public String getOstreet() {
+        return ostreet;
+    }
+
+    public String getOdoorno() {
+        return odoorno;
+    }
+
+    public void setOcountry(String ocountry) {
+        this.ocountry = ocountry;
+    }
+
+    public void setOcity(String ocity) {
+        this.ocity = ocity;
+    }
+
+    public void setOdistrict(String odistrict) {
+        this.odistrict = odistrict;
+    }
+
+    public void setOstreet(String ostreet) {
+        this.ostreet = ostreet;
+    }
+
+    public void setOdoorno(String odoorno) {
+        this.odoorno = odoorno;
+    }
 
     public String getCountry() {
         return country;
@@ -92,8 +143,14 @@ public class UserBean implements Serializable {
         return Tags.THANKS;
     }
 
-    public void addAddress() {
+    public void addHomeAddress() {
         HomeAddress address = new HomeAddress(country, city, district, street, doorno);
         operations.mapHomeAddressToUser(user, address);
+
+    }
+
+    public void addOfficeAddress() {
+        OfficeAddress officeAddress = new OfficeAddress(ocountry, ocity, odistrict, ostreet, odoorno);
+        operations.mapOfficeAddressToUser(user, officeAddress);
     }
 }
