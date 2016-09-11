@@ -13,4 +13,5 @@ public class TableNames {
 
     public static final String USER = "USERS";
     public static final String HOME_ADDRESS = "USER_HOME_ADDRESS";
+    public static final String OFFICE_ADDRESS = "USER_OFFICE_ADDRESS";
 }

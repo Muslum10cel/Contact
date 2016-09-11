@@ -18,9 +18,9 @@ public class ColumnNames {
     public static final String PASSWORD = "PASSWORD";
     public static final String E_MAIL = "E_MAIL";
     public static final String JOINED_DATE = "JOINED_DATE";
-    
+
     /**
-     * Column names of USER_HOME_ADDRESS table
+     * Column names of USER_HOME_ADDRESS and USER_OFFICE_ADDRESS tables
      */
     public static final String COUNTRY = "COUNTRY";
     public static final String CITY = "CITY";
