@@ -11,6 +11,6 @@ package com.hackengine.queries;
  */
 public class Queries {
     
-    public static final String LOG_IN_QUERY="SELECT U.password FROM Users U WHERE U.username = ?";
+    public static final String LOG_IN_QUERY="SELECT U FROM Users U WHERE U.username = ?";
     
 }
