@@ -95,7 +95,6 @@ public class UserBean implements Serializable {
     public void addAddress() {
         System.out.println(city + "--" + street);
         HomeAddress address = new HomeAddress(country, city, district, street, doorno);
-        operations.addHomeAddress(address);
         operations.mapHomeAddressToUser(user, address);
     }
 }
