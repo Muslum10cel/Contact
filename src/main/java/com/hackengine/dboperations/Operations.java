@@ -38,12 +38,10 @@ public class Operations {
 
     public String login(Users login) {
         openSession();
-        List result = session.createQuery(Queries.LOG_IN_QUERY)
-                .setString(0, login.getUsername())
-                .list();
-        if (result != null && result.size() > 0) {
-            if (result.get(0).equals(login.getPassword())) {
-                SessionUtils.getSession().setAttribute(Tags.LOGGED_USER, login);
+        List<Users> result = session.createQuery(Queries.LOG_IN_QUERY).setString(0, login.getUsername()).list();
+        if (result != null) {
+            if (result.get(0).getPassword().equals(login.getPassword())) {
+                SessionUtils.getSession().setAttribute(Tags.LOGGED_USER, result.get(0));
                 return "success";
             }
         }
@@ -56,17 +54,12 @@ public class Operations {
         session.getTransaction().commit();
     }
 
-    public void addHomeAddress(HomeAddress homeAddress) {
-        openSession();
-        session.beginTransaction();
-        session.save(homeAddress);
-        session.getTransaction().commit();
-    }
-
     public void mapHomeAddressToUser(Users user, HomeAddress address) {
         openSession();
         session.beginTransaction();
+        session.save(address);
         address.setUsers(user);
+        user.getHomeAddresses().add(address);
         session.getTransaction().commit();
     }
 
