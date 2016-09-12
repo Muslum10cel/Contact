@@ -28,4 +28,7 @@ public class ColumnNames {
     public static final String STREET = "STREET";
     public static final String DOOR_NO = "DOOR_NO";
     public static final String USER_ID = "USER_ID";
+
+    public static final String CONTACT_TYPE = "CONTACT_TYPE";
+    public static final String PHONE = "PHONE";
 }

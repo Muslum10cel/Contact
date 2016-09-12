@@ -54,6 +54,9 @@ public class Users implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
     private OfficeAddress officeAddress;
     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
+    private List<ContactOfUser> contactOfUser;
+    
     public Users() {
     }
 
@@ -67,6 +70,14 @@ public class Users implements Serializable {
     public Users(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public void setContactOfUser(List<ContactOfUser> contactOfUser) {
+        this.contactOfUser = contactOfUser;
+    }
+
+    public List<ContactOfUser> getContactOfUser() {
+        return contactOfUser;
     }
 
     public String getEmail() {

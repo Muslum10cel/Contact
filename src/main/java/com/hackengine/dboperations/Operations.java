@@ -5,6 +5,7 @@
  */
 package com.hackengine.dboperations;
 
+import com.hackengine.entities.ContactOfUser;
 import com.hackengine.entities.HomeAddress;
 import com.hackengine.entities.OfficeAddress;
 import com.hackengine.entities.Users;
@@ -25,11 +26,16 @@ public class Operations {
     private static final SessionFactory factory = new Configuration().configure().buildSessionFactory();
     private static Session session = null;
 
+    private static void openSession() {
+        session = factory.openSession();
+    }
+
     public String register(Users register) {
         try {
             openSession();
             saveUserInfo(register);
             System.out.println(register);
+            closeSession();
             return Tags.SUCCESS;
         } catch (Exception e) {
             return Tags.FAIL;
@@ -43,9 +49,11 @@ public class Operations {
         if (result != null) {
             if (result.get(0).getPassword().equals(login.getPassword())) {
                 SessionUtils.getSession().setAttribute(Tags.LOGGED_USER, result.get(0));
+                closeSession();
                 return Tags.SUCCESS;
             }
         }
+        closeSession();
         return Tags.FAIL;
     }
 
@@ -62,6 +70,7 @@ public class Operations {
         address.setUsers(user);
         user.getHomeAddresses().add(address);
         session.getTransaction().commit();
+        closeSession();
     }
 
     public void mapOfficeAddressToUser(Users user, OfficeAddress officeAddress) {
@@ -71,9 +80,20 @@ public class Operations {
         officeAddress.setUsers(user);
         user.setOfficeAddress(officeAddress);
         session.getTransaction().commit();
+        closeSession();
     }
 
-    private static void openSession() {
-        session = factory.openSession();
+    public void mapContactToUser(Users user, ContactOfUser contactOfUser) {
+        openSession();
+        session.beginTransaction();
+        session.save(contactOfUser);
+        contactOfUser.setUsers(user);
+        user.getContactOfUser().add(contactOfUser);
+        session.getTransaction().commit();
+        closeSession();
+    }
+
+    private void closeSession() {
+        session.close();
     }
 }
