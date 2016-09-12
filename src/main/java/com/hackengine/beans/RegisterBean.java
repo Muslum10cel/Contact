@@ -61,8 +61,6 @@ public class RegisterBean implements Serializable{
     }
 
     public String register() {
-        System.out.println("asdmalsndmalsm");
-        Operations operations = new Operations();
-        return operations.register(new Users(username, password, email, Calendar.getInstance()));
+        return new Operations().register(new Users(username, password, email, Calendar.getInstance()));
     }
 }
