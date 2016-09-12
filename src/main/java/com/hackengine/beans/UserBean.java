@@ -146,7 +146,6 @@ public class UserBean implements Serializable {
     public void addHomeAddress() {
         HomeAddress address = new HomeAddress(country, city, district, street, doorno);
         operations.mapHomeAddressToUser(user, address);
-
     }
 
     public void addOfficeAddress() {
