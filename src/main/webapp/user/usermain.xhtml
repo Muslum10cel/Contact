@@ -39,6 +39,18 @@ and open the template in the editor.
             </p:panelGrid>
             <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}"/>
 
+            <p:dataTable paginator="true" 
+                         rows="5" 
+                         paginatorTemplate="{CurrentPageReport} 
+                         {FirstPageLink} 
+                         {PreviousPageLink} 
+                         {PageLinks} 
+                         {NextPageLink} 
+                         {LastPageLink} 
+                         {RowsPerPageDropdown}">
+                <f:facet name="header">Home Addresses</f:facet>
+            </p:dataTable>
+
             <p:separator/>
 
             <p:panelGrid columns="2">
@@ -60,7 +72,19 @@ and open the template in the editor.
                 <p:inputText value="#{userBean.odoorno}"/>
             </p:panelGrid>
             <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}"/>
-
+            
+            <p:dataTable paginator="true" 
+                         rows="5" 
+                         paginatorTemplate="{CurrentPageReport} 
+                         {FirstPageLink} 
+                         {PreviousPageLink} 
+                         {PageLinks} 
+                         {NextPageLink} 
+                         {LastPageLink} 
+                         {RowsPerPageDropdown}">
+                <f:facet name="header">Office Addresses</f:facet>
+            </p:dataTable>
+            
             <p:separator/>
 
         </h:form>
