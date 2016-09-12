@@ -98,5 +98,4 @@ public class ContactOfUser implements Serializable {
     public String toString() {
         return "ContactOfUser{" + "ID=" + ID + ", contactType=" + contactType + ", phone=" + phone + ", email=" + email + '}';
     }
-
 }
