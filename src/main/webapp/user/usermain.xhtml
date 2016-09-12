@@ -16,8 +16,8 @@ and open the template in the editor.
     <h:body>
         <div>User.xhtml</div>
         <h:form>
-
-            <p:commandButton value="Print User" action="#{userBean.printUser()}"/>
+            <p:commandLink value="Log Out" action="#{userBean.logOut()}"/>
+            <p:separator/>
 
             <p:panelGrid columns="2">
                 <f:facet name="header">Add Home Address</f:facet>
@@ -37,7 +37,9 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.doorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Address" action="#{userBean.addHomeAddress()}"/>
+            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}"/>
+
+            <p:separator/>
 
             <p:panelGrid columns="2">
                 <f:facet name="header">Add Office Address</f:facet>
@@ -57,8 +59,10 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.odoorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Address" action="#{userBean.addOfficeAddress()}"/>
-            <p:commandLink value="Log Out" action="#{userBean.logOut()}"/>
+            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}"/>
+
+            <p:separator/>
+
         </h:form>
     </h:body>
 </html>

@@ -128,10 +128,6 @@ public class UserBean implements Serializable {
         return doorno;
     }
 
-    public void printUser() {
-        System.out.println(user);
-    }
-
     @PostConstruct
     public void init() {
         user = (Users) SessionUtils.getSession().getAttribute(Tags.LOGGED_USER);
