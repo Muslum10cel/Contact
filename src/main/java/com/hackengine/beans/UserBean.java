@@ -158,6 +158,7 @@ public class UserBean implements Serializable {
     }
 
     public String logOut() {
+        Operations.closeSession();
         SessionUtils.getSession().invalidate();
         return Tags.THANKS;
     }
