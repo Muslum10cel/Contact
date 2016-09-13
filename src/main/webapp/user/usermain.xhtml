@@ -15,7 +15,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <div>User.xhtml</div>
-        <h:form>
+        <h:form id="form1">
             <p:commandLink value="Log Out" action="#{userBean.logOut()}"/>
             <p:separator/>
 
@@ -37,17 +37,19 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.doorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}"/>
+            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" update=":form1:homeAddressTable"/>
 
-            <p:dataTable paginator="true" 
-                         rows="5" 
-                         paginatorTemplate="{CurrentPageReport} 
-                         {FirstPageLink} 
-                         {PreviousPageLink} 
-                         {PageLinks} 
-                         {NextPageLink} 
-                         {LastPageLink} 
-                         {RowsPerPageDropdown}">
+            <p:dataTable 
+                id="homeAddressTable"
+                paginator="true" 
+                rows="5" 
+                paginatorTemplate="{CurrentPageReport} 
+                {FirstPageLink} 
+                {PreviousPageLink} 
+                {PageLinks} 
+                {NextPageLink} 
+                {LastPageLink} 
+                {RowsPerPageDropdown}">
                 <f:facet name="header">Home Addresses</f:facet>
             </p:dataTable>
 
@@ -71,20 +73,22 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.odoorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}"/>
-            
-            <p:dataTable paginator="true" 
-                         rows="5" 
-                         paginatorTemplate="{CurrentPageReport} 
-                         {FirstPageLink} 
-                         {PreviousPageLink} 
-                         {PageLinks} 
-                         {NextPageLink} 
-                         {LastPageLink} 
-                         {RowsPerPageDropdown}">
+            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" update=":form1:officeAddressTable"/>
+
+            <p:dataTable 
+                id="officeAddressTable"
+                paginator="true" 
+                rows="5" 
+                paginatorTemplate="{CurrentPageReport} 
+                {FirstPageLink} 
+                {PreviousPageLink} 
+                {PageLinks} 
+                {NextPageLink} 
+                {LastPageLink} 
+                {RowsPerPageDropdown}">
                 <f:facet name="header">Office Addresses</f:facet>
             </p:dataTable>
-            
+
             <p:separator/>
 
         </h:form>
