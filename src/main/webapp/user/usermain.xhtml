@@ -37,10 +37,12 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.doorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" update=":form1:homeAddressTable"/>
+            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" ajax="true" update="homeAddressTable"/>
 
             <p:dataTable 
                 id="homeAddressTable"
+                var="homeAdress"
+                value="#{userBean.homeAdresses}"
                 paginator="true" 
                 rows="5" 
                 stickyHeader="true"
@@ -54,6 +56,24 @@ and open the template in the editor.
                 {LastPageLink} 
                 {RowsPerPageDropdown}">
                 <f:facet name="header">Home Addresses</f:facet>
+                <p:column headerText="ID">
+                    <p:outputLabel value="#{homeAdress.ID}"/>
+                </p:column>
+                <p:column headerText="CITY">
+                    <p:outputLabel value="#{homeAdress.city}"/>
+                </p:column>
+                <p:column headerText="COUNTRY">
+                    <p:outputLabel value="#{homeAdress.country}"/>
+                </p:column>
+                <p:column headerText="DISTRICT">
+                    <p:outputLabel value="#{homeAdress.district}"/>
+                </p:column>
+                <p:column headerText="STREET">
+                    <p:outputLabel value="#{homeAdress.street}"/>
+                </p:column>
+                <p:column headerText="DOOR NO">
+                    <p:outputLabel value="#{homeAdress.doorno}"/>
+                </p:column>
             </p:dataTable>
 
             <p:separator/>
@@ -76,10 +96,12 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.odoorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" update=":form1:officeAddressTable"/>
+            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" ajax="true" update="officeAddressTable"/>
 
             <p:dataTable 
                 id="officeAddressTable"
+                var="officeAddress"
+                value="#{userBean.officeAddresses}"
                 paginator="true" 
                 rows="5" 
                 scrollable="true"
@@ -93,6 +115,24 @@ and open the template in the editor.
                 {LastPageLink} 
                 {RowsPerPageDropdown}">
                 <f:facet name="header">Office Addresses</f:facet>
+                <p:column headerText="ID">
+                    <p:outputLabel value="#{officeAddress.ID}"/>
+                </p:column>
+                <p:column headerText="CITY">
+                    <p:outputLabel value="#{officeAddress.city}"/>
+                </p:column>
+                <p:column headerText="COUNTRY">
+                    <p:outputLabel value="#{officeAddress.country}"/>
+                </p:column>
+                <p:column headerText="DISTRICT">
+                    <p:outputLabel value="#{officeAddress.district}"/>
+                </p:column>
+                <p:column headerText="STREET">
+                    <p:outputLabel value="#{officeAddress.street}"/>
+                </p:column>
+                <p:column headerText="DOOR NO">
+                    <p:outputLabel value="#{officeAddress.doorno}"/>
+                </p:column>
             </p:dataTable>
 
             <p:separator/>

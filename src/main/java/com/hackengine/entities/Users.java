@@ -51,8 +51,8 @@ public class Users implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
     private List<HomeAddress> homeAddresses;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
-    private OfficeAddress officeAddress;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
+    private List<OfficeAddress> officeAddress;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
     private List<ContactOfUser> contactOfUser;
@@ -128,11 +128,11 @@ public class Users implements Serializable {
         this.homeAddresses = homeAddresses;
     }
 
-    public OfficeAddress getOfficeAddress() {
+    public List<OfficeAddress> getOfficeAddress() {
         return officeAddress;
     }
 
-    public void setOfficeAddress(OfficeAddress officeAddress) {
+    public void setOfficeAddress(List<OfficeAddress> officeAddress) {
         this.officeAddress = officeAddress;
     }
     

@@ -12,5 +12,6 @@
         <mapping class="com.hackengine.entities.Users"/>
         <mapping class="com.hackengine.entities.HomeAddress"/>
         <mapping class="com.hackengine.entities.OfficeAddress"/>
+        <mapping class="com.hackengine.entities.ContactOfUser"/>
     </session-factory>
 </hibernate-configuration>

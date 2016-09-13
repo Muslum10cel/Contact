@@ -12,6 +12,7 @@ import com.hackengine.entities.Users;
 import com.hackengine.tags.Tags;
 import com.hackengine.utils.SessionUtils;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,6 +26,10 @@ import javax.faces.bean.SessionScoped;
 public class UserBean implements Serializable {
 
     private static Users user = null;
+
+    private List<HomeAddress> homeAdresses;
+
+    public List<OfficeAddress> officeAddresses;
 
     private Operations operations = null;
 
@@ -128,10 +133,28 @@ public class UserBean implements Serializable {
         return doorno;
     }
 
+    public List<HomeAddress> getHomeAdresses() {
+        return homeAdresses;
+    }
+
+    public void setHomeAdresses(List<HomeAddress> homeAdresses) {
+        this.homeAdresses = homeAdresses;
+    }
+
+    public void setOfficeAddresses(List<OfficeAddress> officeAddresses) {
+        this.officeAddresses = officeAddresses;
+    }
+
+    public List<OfficeAddress> getOfficeAddresses() {
+        return officeAddresses;
+    }
+
     @PostConstruct
     public void init() {
         user = (Users) SessionUtils.getSession().getAttribute(Tags.LOGGED_USER);
         operations = new Operations();
+        homeAdresses = Operations.getHomeAddresses(user.getID());
+        officeAddresses = Operations.getOfficeAddresses(user.getID());
     }
 
     public String logOut() {

@@ -35,7 +35,6 @@ public class Operations {
             openSession();
             saveUserInfo(register);
             System.out.println(register);
-            closeSession();
             return Tags.SUCCESS;
         } catch (Exception e) {
             return Tags.FAIL;
@@ -49,11 +48,9 @@ public class Operations {
         if (result != null) {
             if (result.get(0).getPassword().equals(login.getPassword())) {
                 SessionUtils.getSession().setAttribute(Tags.LOGGED_USER, result.get(0));
-                closeSession();
                 return Tags.SUCCESS;
             }
         }
-        closeSession();
         return Tags.FAIL;
     }
 
@@ -70,7 +67,6 @@ public class Operations {
         address.setUsers(user);
         user.getHomeAddresses().add(address);
         session.getTransaction().commit();
-        closeSession();
     }
 
     public void mapOfficeAddressToUser(Users user, OfficeAddress officeAddress) {
@@ -78,9 +74,8 @@ public class Operations {
         session.beginTransaction();
         session.save(officeAddress);
         officeAddress.setUsers(user);
-        user.setOfficeAddress(officeAddress);
+        user.getOfficeAddress().add(officeAddress);
         session.getTransaction().commit();
-        closeSession();
     }
 
     public void mapContactToUser(Users user, ContactOfUser contactOfUser) {
@@ -90,10 +85,13 @@ public class Operations {
         contactOfUser.setUsers(user);
         user.getContactOfUser().add(contactOfUser);
         session.getTransaction().commit();
-        closeSession();
     }
 
-    private void closeSession() {
-        session.close();
+    public static List<HomeAddress> getHomeAddresses(int id) {
+        return session.createQuery(Queries.GET_HOME_ADDRESSES).setInteger(0, id).list();
+    }
+
+    public static List<OfficeAddress> getOfficeAddresses(int id) {
+        return session.createQuery(Queries.GET_OFFICE_ADDRESSES).setInteger(0, id).list();
     }
 }
