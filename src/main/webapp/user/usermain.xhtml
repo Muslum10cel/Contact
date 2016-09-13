@@ -36,7 +36,7 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.doorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" ajax="true" update="homeAddressTable"/>
+            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" ajax="true" update=":form1:homeAddressTable"/>
 
             <p:dataTable 
                 id="homeAddressTable"
@@ -74,7 +74,7 @@ and open the template in the editor.
                     <p:outputLabel value="#{homeAdress.doorno}"/>
                 </p:column>
                 <p:column headerText="ACTION">
-                    <p:commandLink value="Delete" action="#{userBean.deleteHomeAddress(homeAdress)}" ajax="true" update="homeAddressTable"/>
+                    <p:commandLink value="Delete" action="#{userBean.deleteHomeAddress(homeAdress)}" ajax="true" update=":form1:homeAddressTable"/>
                 </p:column>
             </p:dataTable>
 
@@ -98,7 +98,7 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.odoorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" ajax="true" update="officeAddressTable"/>
+            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" ajax="true" update=":form1:officeAddressTable"/>
 
             <p:dataTable 
                 id="officeAddressTable"
@@ -136,7 +136,7 @@ and open the template in the editor.
                     <p:outputLabel value="#{officeAddress.doorno}"/>
                 </p:column>
                 <p:column headerText="ACTION">
-                    <p:commandLink value="Delete" action="#{userBean.deleteOfficeAddress(officeAddress)}" ajax="true" update="officeAddressTable"/>
+                    <p:commandLink value="Delete" action="#{userBean.deleteOfficeAddress(officeAddress)}" ajax="true" update=":form1:officeAddressTable"/>
                 </p:column>
             </p:dataTable>
 
