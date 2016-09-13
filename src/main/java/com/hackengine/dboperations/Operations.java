@@ -94,4 +94,18 @@ public class Operations {
     public static List<OfficeAddress> getOfficeAddresses(int id) {
         return session.createQuery(Queries.GET_OFFICE_ADDRESSES).setInteger(0, id).list();
     }
+    
+    public void deleteHomeAddress(HomeAddress homeAddress){
+        openSession();
+        session.beginTransaction();
+        session.delete(homeAddress);
+        session.getTransaction().commit();
+    }
+    
+    public void deleteOfficeAddress(OfficeAddress officeAddress){
+        openSession();
+        session.beginTransaction();
+        session.delete(officeAddress);
+        session.getTransaction().commit();
+    }
 }

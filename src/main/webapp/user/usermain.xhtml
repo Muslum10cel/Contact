@@ -37,7 +37,7 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.doorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" ajax="true" update="homeAddressTable"/>
+            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}"/>
 
             <p:dataTable 
                 id="homeAddressTable"
@@ -74,6 +74,9 @@ and open the template in the editor.
                 <p:column headerText="DOOR NO">
                     <p:outputLabel value="#{homeAdress.doorno}"/>
                 </p:column>
+                <p:column headerText="ACTION">
+                    <p:commandLink value="Delete" action="#{userBean.deleteHomeAddress(homeAdress)}"/>
+                </p:column>
             </p:dataTable>
 
             <p:separator/>
@@ -96,7 +99,7 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.odoorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" ajax="true" update="officeAddressTable"/>
+            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}"/>
 
             <p:dataTable 
                 id="officeAddressTable"
@@ -132,6 +135,9 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="DOOR NO">
                     <p:outputLabel value="#{officeAddress.doorno}"/>
+                </p:column>
+                <p:column headerText="ACTION">
+                    <p:commandLink value="Delete" action="#{userBean.deleteOfficeAddress(officeAddress)}"/>
                 </p:column>
             </p:dataTable>
 

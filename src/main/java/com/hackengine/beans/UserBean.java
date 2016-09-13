@@ -171,4 +171,12 @@ public class UserBean implements Serializable {
         OfficeAddress officeAddress = new OfficeAddress(ocountry, ocity, odistrict, ostreet, odoorno);
         operations.mapOfficeAddressToUser(user, officeAddress);
     }
+
+    public void deleteHomeAddress(HomeAddress address) {
+        operations.deleteHomeAddress(address);
+    }
+
+    public void deleteOfficeAddress(OfficeAddress address) {
+        operations.deleteOfficeAddress(address);
+    }
 }
