@@ -18,7 +18,6 @@ and open the template in the editor.
         <h:form id="form1">
             <p:commandLink value="Log Out" action="#{userBean.logOut()}"/>
             <p:separator/>
-
             <p:panelGrid columns="2">
                 <f:facet name="header">Add Home Address</f:facet>
 
@@ -37,7 +36,7 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.doorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}"/>
+            <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" ajax="true" update="homeAddressTable"/>
 
             <p:dataTable 
                 id="homeAddressTable"
@@ -75,7 +74,7 @@ and open the template in the editor.
                     <p:outputLabel value="#{homeAdress.doorno}"/>
                 </p:column>
                 <p:column headerText="ACTION">
-                    <p:commandLink value="Delete" action="#{userBean.deleteHomeAddress(homeAdress)}"/>
+                    <p:commandLink value="Delete" action="#{userBean.deleteHomeAddress(homeAdress)}" ajax="true" update="homeAddressTable"/>
                 </p:column>
             </p:dataTable>
 
@@ -99,7 +98,7 @@ and open the template in the editor.
                 <p:outputLabel value="Door No:"/>
                 <p:inputText value="#{userBean.odoorno}"/>
             </p:panelGrid>
-            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}"/>
+            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" ajax="true" update="officeAddressTable"/>
 
             <p:dataTable 
                 id="officeAddressTable"
@@ -137,7 +136,7 @@ and open the template in the editor.
                     <p:outputLabel value="#{officeAddress.doorno}"/>
                 </p:column>
                 <p:column headerText="ACTION">
-                    <p:commandLink value="Delete" action="#{userBean.deleteOfficeAddress(officeAddress)}"/>
+                    <p:commandLink value="Delete" action="#{userBean.deleteOfficeAddress(officeAddress)}" ajax="true" update="officeAddressTable"/>
                 </p:column>
             </p:dataTable>
 
