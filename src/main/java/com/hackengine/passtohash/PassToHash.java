@@ -5,6 +5,7 @@
  */
 package com.hackengine.passtohash;
 
+import com.hackengine.tags.Tags;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,10 +18,10 @@ public class PassToHash {
 
     public static final String passToHash(String pass) {
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(pass.getBytes("UTF-8"));
+            MessageDigest md = MessageDigest.getInstance(Tags.ALGORITHM_FOR_HASH);
+            md.update(pass.getBytes(Tags.CHARSET_NAME));
             byte[] digest = md.digest();
-            return String.format("%064x", new java.math.BigInteger(1, digest));
+            return String.format(Tags.FORMAT, new java.math.BigInteger(1, digest));
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
         }
         return null;
