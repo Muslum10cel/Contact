@@ -11,6 +11,7 @@ import com.hackengine.db.TableNames;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class ContactOfUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ID;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = ColumnNames.CONTACT_TYPE, updatable = true)
     private ContactType contactType;
 
