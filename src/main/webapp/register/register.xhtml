@@ -19,14 +19,14 @@ and open the template in the editor.
                 <p:panelGrid columns="3">
                     <f:facet name="header">Register Form</f:facet>
 
-                    <p:outputLabel value="Username : "/>
+                    <p:outputLabel value="Kullanıcı Adı : "/>
                     <p:inputText value="#{registerBean.username}" 
                                  id="username" 
                                  required="true" 
                                  requiredMessage="Enter a username!"/>
                     <p:message for="username" />
 
-                    <p:outputLabel value="Password : "/>
+                    <p:outputLabel value="Şifre : "/>
                     <p:password value="#{registerBean.password}" 
                                 id="password" 
                                 match="passwordConfirm" 
@@ -38,7 +38,7 @@ and open the template in the editor.
                                 validatorMessage="Passwords are not matching!"/>
                     <p:message for="password"/>
 
-                    <p:outputLabel value="Password Confirm : "/>
+                    <p:outputLabel value="Şifre Onay : "/>
                     <p:password id="passwordConfirm" 
                                 value="#{registerBean.passwordConfirm}" 
                                 feedback="true" 
@@ -60,7 +60,7 @@ and open the template in the editor.
                     <p:message for="mail"/>
                 </p:panelGrid>
                 <p:separator/>
-                <p:commandButton value="Register" action="#{registerBean.register()}" update=":registerForm"/>
+                <p:commandButton value="Kaydol" action="#{registerBean.register()}" update=":registerForm"/>
 
             </h:form>
 
