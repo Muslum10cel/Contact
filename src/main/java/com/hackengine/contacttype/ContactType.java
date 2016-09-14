@@ -10,5 +10,5 @@ package com.hackengine.contacttype;
  * @author muslumoncel
  */
 public enum ContactType {
-    FAX, HOME, OFFICE, MOBILE, EMAIL
+    FAX, HOME, OFFICE, MOBILE, EMAIL, WEB_SITE
 }
