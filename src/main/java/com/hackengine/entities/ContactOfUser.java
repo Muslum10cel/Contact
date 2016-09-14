@@ -46,8 +46,9 @@ public class ContactOfUser implements Serializable {
     public ContactOfUser() {
     }
 
-    public ContactOfUser(ContactType contactType) {
+    public ContactOfUser(ContactType contactType, String contact) {
         this.contactType = contactType;
+        this.contact = contact;
     }
 
     public void setUsers(Users users) {
