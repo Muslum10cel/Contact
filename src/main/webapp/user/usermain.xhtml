@@ -34,28 +34,28 @@ and open the template in the editor.
     <h:body>
         <div>User.xhtml</div>
         <h:form>
-            <p:commandLink value="Log Out" action="#{userBean.logOut()}"/>
+            <p:commandLink value="Çıkış Yap" action="#{userBean.logOut()}"/>
             <p:separator/>
 
             <table border ="1">
                 <tr>
                     <td>
                         <p:panelGrid columns="2">
-                            <f:facet name="header">Add Home Address</f:facet>
+                            <f:facet name="header">Ev Adresi Ekle</f:facet>
 
-                            <p:outputLabel value="Country:"/>
+                            <p:outputLabel value="İl : "/>
                             <p:inputText value="#{userBean.country}"/>
 
-                            <p:outputLabel value="City"/>
+                            <p:outputLabel value="İlçe : "/>
                             <p:inputText value="#{userBean.city}"/>
 
-                            <p:outputLabel value="District:"/>
+                            <p:outputLabel value="Mahalle/Cadde : "/>
                             <p:inputText value="#{userBean.district}"/>
 
-                            <p:outputLabel value="Street:"/>
+                            <p:outputLabel value="Sokak : "/>
                             <p:inputText value="#{userBean.street}"/>
 
-                            <p:outputLabel value="Door No:"/>
+                            <p:outputLabel value="No : "/>
                             <p:inputText value="#{userBean.doorno}"/>
                         </p:panelGrid>
                     </td>
@@ -75,34 +75,31 @@ and open the template in the editor.
                                      {NextPageLink} 
                                      {LastPageLink} 
                                      {RowsPerPageDropdown}">
-                            <f:facet name="header">Home Addresses</f:facet>
-                            <p:column headerText="ID">
-                                <p:outputLabel value="#{homeAdress.ID}"/>
-                            </p:column>
-                            <p:column headerText="CITY">
+                            <f:facet name="header">Ev Adresleri</f:facet>
+                            <p:column headerText="İL">
                                 <p:outputLabel value="#{homeAdress.city}"/>
                             </p:column>
-                            <p:column headerText="COUNTRY">
+                            <p:column headerText="İLÇE">
                                 <p:outputLabel value="#{homeAdress.country}"/>
                             </p:column>
-                            <p:column headerText="DISTRICT">
+                            <p:column headerText="MAHALLE/CADDE">
                                 <p:outputLabel value="#{homeAdress.district}"/>
                             </p:column>
-                            <p:column headerText="STREET">
+                            <p:column headerText="SOKAK">
                                 <p:outputLabel value="#{homeAdress.street}"/>
                             </p:column>
-                            <p:column headerText="DOOR NO">
+                            <p:column headerText="NO">
                                 <p:outputLabel value="#{homeAdress.doorno}"/>
                             </p:column>
-                            <p:column headerText="ACTION">
-                                <p:commandLink value="Delete" action="#{userBean.deleteHomeAddress(homeAdress)}" ajax="true" update="homeAddressTable"/>
+                            <p:column headerText="İŞLEM">
+                                <p:commandLink value="Adresi Sil" action="#{userBean.deleteHomeAddress(homeAdress)}" ajax="true" update="homeAddressTable"/>
                             </p:column>
                         </p:dataTable>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p:commandButton value="Add Home Address" action="#{userBean.addHomeAddress()}" ajax="true" update="homeAddressTable"/>
+                        <p:commandButton value="Ev Adresi Ekle" action="#{userBean.addHomeAddress()}" ajax="true" update="homeAddressTable"/>
                     </td>
                 </tr>
             </table>
@@ -111,21 +108,21 @@ and open the template in the editor.
                 <tr>
                     <td>
                         <p:panelGrid columns="2">
-                            <f:facet name="header">Add Office Address</f:facet>
+                            <f:facet name="header">Ofis Adresi Ekle</f:facet>
 
-                            <p:outputLabel value="Country:"/>
+                            <p:outputLabel value="İl : "/>
                             <p:inputText value="#{userBean.ocountry}"/>
 
-                            <p:outputLabel value="City"/>
+                            <p:outputLabel value="İlçe : "/>
                             <p:inputText value="#{userBean.ocity}"/>
 
-                            <p:outputLabel value="District:"/>
+                            <p:outputLabel value="Mahalle/Cadde : "/>
                             <p:inputText value="#{userBean.odistrict}"/>
 
-                            <p:outputLabel value="Street:"/>
+                            <p:outputLabel value="Sokak : "/>
                             <p:inputText value="#{userBean.ostreet}"/>
 
-                            <p:outputLabel value="Door No:"/>
+                            <p:outputLabel value="No : "/>
                             <p:inputText value="#{userBean.odoorno}"/>
                         </p:panelGrid>
                     </td>
@@ -146,33 +143,30 @@ and open the template in the editor.
                             {NextPageLink} 
                             {LastPageLink} 
                             {RowsPerPageDropdown}">
-                            <f:facet name="header">Office Addresses</f:facet>
-                            <p:column headerText="ID">
-                                <p:outputLabel value="#{officeAddress.ID}"/>
-                            </p:column>
-                            <p:column headerText="CITY">
+                            <f:facet name="header">Ofis Adresleri</f:facet>
+                            <p:column headerText="İL">
                                 <p:outputLabel value="#{officeAddress.city}"/>
                             </p:column>
-                            <p:column headerText="COUNTRY">
+                            <p:column headerText="İLÇE">
                                 <p:outputLabel value="#{officeAddress.country}"/>
                             </p:column>
-                            <p:column headerText="DISTRICT">
+                            <p:column headerText="MAHALLE/CADDE">
                                 <p:outputLabel value="#{officeAddress.district}"/>
                             </p:column>
-                            <p:column headerText="STREET">
+                            <p:column headerText="SOKAK">
                                 <p:outputLabel value="#{officeAddress.street}"/>
                             </p:column>
-                            <p:column headerText="DOOR NO">
+                            <p:column headerText="NO">
                                 <p:outputLabel value="#{officeAddress.doorno}"/>
                             </p:column>
-                            <p:column headerText="ACTION">
-                                <p:commandLink value="Delete" action="#{userBean.deleteOfficeAddress(officeAddress)}" ajax="true" update="officeAddressTable"/>
+                            <p:column headerText="İŞLEM">
+                                <p:commandLink value="Adresi Sil" action="#{userBean.deleteOfficeAddress(officeAddress)}" ajax="true" update="officeAddressTable"/>
                             </p:column>
                         </p:dataTable>
                     </td>
                     <tr>
                         <td>  
-                            <p:commandButton value="Add Office Address" action="#{userBean.addOfficeAddress()}" ajax="true" update="officeAddressTable"/>
+                            <p:commandButton value="Ofis Adresi Ekle" action="#{userBean.addOfficeAddress()}" ajax="true" update="officeAddressTable"/>
                         </td>
                     </tr>
                 </tr>
