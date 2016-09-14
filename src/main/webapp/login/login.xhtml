@@ -17,21 +17,21 @@ and open the template in the editor.
         <div>
             <h:form id="loginForm">
                 <p:panelGrid columns="3">
-                    <f:facet name="header">Login Form</f:facet>
+                    <f:facet name="header">Giriş Formu</f:facet>
                     <p:inputText id="username" 
                                  value="#{loginBean.username}" 
                                  required="true"
                                  requiredMessage="Enter username!"/>
-                    <p:watermark for="username" value="Username *"/>
+                    <p:watermark for="username" value="Kullanıcı Adı *"/>
                     <p:message for="username"/>
 
                     <p:password id="password"
                                 value="#{loginBean.password}"
                                 required="true"
                                 requiredMessage="Provide Password"/>
-                    <p:watermark for="password" value="Password *"/>
+                    <p:watermark for="password" value="Şifre *"/>
                     <p:message for="password"/>
-                    <p:commandButton value="Login" action="#{loginBean.login()}"/>
+                    <p:commandButton value="Giriş Yap" action="#{loginBean.login()}"/>
                 </p:panelGrid>
             </h:form>
         </div>
