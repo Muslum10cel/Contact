@@ -24,7 +24,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class UserBean implements Serializable {
-
+    
     private static Users user = null;
 
     private List<HomeAddress> homeAdresses;
