@@ -166,18 +166,22 @@ public class UserBean implements Serializable {
     public void addHomeAddress() {
         HomeAddress address = new HomeAddress(country, city, district, street, doorno);
         operations.mapHomeAddressToUser(user, address);
+        homeAdresses = Operations.getHomeAddresses(user.getID());
     }
 
     public void addOfficeAddress() {
         OfficeAddress officeAddress = new OfficeAddress(ocountry, ocity, odistrict, ostreet, odoorno);
         operations.mapOfficeAddressToUser(user, officeAddress);
+        officeAddresses = Operations.getOfficeAddresses(user.getID());
     }
 
     public void deleteHomeAddress(HomeAddress address) {
         operations.deleteHomeAddress(address);
+        homeAdresses = Operations.getHomeAddresses(user.getID());
     }
 
     public void deleteOfficeAddress(OfficeAddress address) {
         operations.deleteOfficeAddress(address);
+        officeAddresses = Operations.getOfficeAddresses(user.getID());
     }
 }
