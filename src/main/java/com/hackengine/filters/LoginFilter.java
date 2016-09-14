@@ -22,12 +22,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author muslumoncel
  */
-@WebFilter(urlPatterns = {"/user/*"})
+@WebFilter(urlPatterns = {Tags.USER_URL_PATTERN})
 public class LoginFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        
+
     }
 
     @Override
