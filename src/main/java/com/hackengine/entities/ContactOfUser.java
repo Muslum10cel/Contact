@@ -36,23 +36,18 @@ public class ContactOfUser implements Serializable {
     @Column(name = ColumnNames.CONTACT_TYPE, updatable = true)
     private ContactType contactType;
 
-    @Column(name = ColumnNames.PHONE, updatable = true)
-    private String phone;
-
-    @Column(name = ColumnNames.E_MAIL, updatable = true)
-    private String email;
+    @Column(name = ColumnNames.CONTACT, updatable = true, nullable = false)
+    private String contact;
 
     @ManyToOne
     @JoinColumn(name = ColumnNames.USER_ID)
     private Users users;
-    
+
     public ContactOfUser() {
     }
 
-    public ContactOfUser(ContactType contactType, String phone, String email) {
+    public ContactOfUser(ContactType contactType) {
         this.contactType = contactType;
-        this.phone = phone;
-        this.email = email;
     }
 
     public void setUsers(Users users) {
@@ -71,14 +66,6 @@ public class ContactOfUser implements Serializable {
         return contactType;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -87,16 +74,16 @@ public class ContactOfUser implements Serializable {
         this.contactType = contactType;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getContact() {
+        return contact;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     @Override
     public String toString() {
-        return "ContactOfUser{" + "ID=" + ID + ", contactType=" + contactType + ", phone=" + phone + ", email=" + email + '}';
+        return "ContactOfUser{" + "contactType=" + contactType + ", contact=" + contact + ", users=" + users + '}';
     }
 }

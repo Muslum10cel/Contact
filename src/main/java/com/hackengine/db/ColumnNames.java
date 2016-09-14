@@ -30,5 +30,5 @@ public class ColumnNames {
     public static final String USER_ID = "USER_ID";
 
     public static final String CONTACT_TYPE = "CONTACT_TYPE";
-    public static final String PHONE = "PHONE";
+    public static final String CONTACT = "CONTACT";
 }
