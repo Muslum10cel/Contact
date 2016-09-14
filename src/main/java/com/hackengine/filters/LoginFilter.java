@@ -37,7 +37,7 @@ public class LoginFilter implements Filter {
         try {
             Users username = (Users) req.getSession(false).getAttribute(Tags.LOGGED_USER);
             if (username == null) {
-                resp.sendRedirect(req.getContextPath() + "/index.xhtml");
+                resp.sendRedirect(req.getContextPath() + Tags.INDEX_PAGE);
             } else {
                 chain.doFilter(request, response);
             }
