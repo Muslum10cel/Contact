@@ -2,7 +2,7 @@
 
 This is a simple contact and address saving Java Web application. 
 
-# Used Technology
+# Used Technologies
   
   * Hibernate for Db operations like save, delete etc.
   * JSF for interface
