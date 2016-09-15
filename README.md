@@ -1,12 +1,12 @@
 # Contact
 
-This is a simple contact saving Java Web application. 
+This is a simple contact and address saving Java Web application. 
 
-# Used Technology
+# Used Technologies
   
-  * Hibernate
-  * JSF
-  * MySQL
-  * PrimeFaces
+  * Hibernate for Db operations like save, delete etc.
+  * JSF for view
+  * MySQL as database
+  * PrimeFaces for I/O
   * Maven
 
