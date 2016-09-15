@@ -35,6 +35,7 @@ and open the template in the editor.
         <div>User.xhtml</div>
         <h:form>
             <p:commandLink value="Çıkış Yap" action="#{userBean.logOut()}"/>
+            <p:commandLink value="Profil" action="/user/profil.xhtml?faces-redirect=true"/>
             <p:separator/>
             <table border ="1">
                 <tr>
@@ -144,10 +145,10 @@ and open the template in the editor.
                             {RowsPerPageDropdown}">
                             <f:facet name="header">Ofis Adresleri</f:facet>
                             <p:column headerText="İL">
-                                <p:outputLabel value="#{officeAddress.city}"/>
+                                <p:outputLabel value="#{officeAddress.country}"/>
                             </p:column>
                             <p:column headerText="İLÇE">
-                                <p:outputLabel value="#{officeAddress.country}"/>
+                                <p:outputLabel value="#{officeAddress.city}"/>
                             </p:column>
                             <p:column headerText="MAHALLE/CADDE">
                                 <p:outputLabel value="#{officeAddress.district}"/>

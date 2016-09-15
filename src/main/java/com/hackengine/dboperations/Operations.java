@@ -95,6 +95,10 @@ public class Operations {
         return session.createQuery(Queries.GET_OFFICE_ADDRESSES).setInteger(0, id).list();
     }
 
+    public static List<ContactOfUser> getUserContacts(int id) {
+        return session.createQuery(Queries.GET_USER_CONTACTS).setInteger(0, id).list();
+    }
+
     public void deleteHomeAddress(HomeAddress homeAddress) {
         openSession();
         session.beginTransaction();
@@ -106,6 +110,13 @@ public class Operations {
         openSession();
         session.beginTransaction();
         session.delete(officeAddress);
+        session.getTransaction().commit();
+    }
+
+    public void deleteContact(ContactOfUser contactOfUser) {
+        openSession();
+        session.beginTransaction();
+        session.delete(contactOfUser);
         session.getTransaction().commit();
     }
 
