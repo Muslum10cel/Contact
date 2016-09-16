@@ -172,6 +172,77 @@ and open the template in the editor.
                 </tr>
             </table>
             <p:separator/>
+            <table border ="1">
+                <tr>
+                    <td>
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">Telefon Ekle</f:facet>
+
+                            <p:outputLabel value="İsim:"/>
+                            <p:inputText value="#{userBean.name}"/>
+
+                            <p:outputLabel value="Soyisim:"/>
+                            <p:inputText value="#{userBean.surname}"/>
+
+                            <p:outputLabel value="İlişki:"/>
+                            <p:selectOneMenu value="#{userBean.relationship}">
+                                <f:selectItems value="#{userBean.relationships}"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Türü:"/>
+                            <p:selectOneMenu value="#{userBean.contactType}">
+                                <f:selectItems value="#{userBean.contactTypes}"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Bilgi:"/>
+                            <p:inputText value="#{userBean.contact}"/>
+                        </p:panelGrid>
+                    </td>
+                    <td>
+                        <p:dataTable 
+                            id="friendContactTable"
+                            var="friendContact"
+                            value="#{userBean.friendContacts}"
+                            paginator="true" 
+                            rows="5" 
+                            scrollable="true"
+                            scrollHeight="150"
+                            stickyHeader="true"
+                            paginatorTemplate="{CurrentPageReport} 
+                            {FirstPageLink} 
+                            {PreviousPageLink} 
+                            {PageLinks} 
+                            {NextPageLink} 
+                            {LastPageLink} 
+                            {RowsPerPageDropdown}">
+                            <f:facet name="header">Telefon Numaraları</f:facet>
+                            <p:column headerText="İSİM">
+                                <p:outputLabel value="#{friendContact.name}"/>
+                            </p:column>
+                            <p:column headerText="SOYİSİM">
+                                <p:outputLabel value="#{friendContact.surname}"/>
+                            </p:column>
+                            <p:column headerText="İLİŞKİ">
+                                <p:outputLabel value="#{friendContact.relationship}"/>
+                            </p:column>
+                            <p:column headerText="TÜRÜ">
+                                <p:outputLabel value="#{friendContact.contactType}"/>
+                            </p:column>
+                            <p:column headerText="BİLGİ">
+                                <p:outputLabel value="#{friendContact.contact}"/>
+                            </p:column>
+                            <p:column headerText="İŞLEM">
+                                <p:commandLink value="Bilgiyi Sil" action="#{userBean.deleteFriendContact(friendContact)}" ajax="true" update="friendContactTable"/>
+                            </p:column>
+                        </p:dataTable>
+                    </td>
+                    <tr>
+                        <td>  
+                            <p:commandButton value="Arkadaş Bilgisi Ekle" action="#{userBean.addFriendContact()}" ajax="true" update="friendContactTable"/>
+                        </td>
+                    </tr>
+                </tr>
+            </table>
         </h:form>
     </h:body>
 </html>

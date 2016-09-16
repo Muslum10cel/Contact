@@ -5,10 +5,13 @@
  */
 package com.hackengine.beans;
 
+import com.hackengine.contacttype.ContactType;
 import com.hackengine.dboperations.Operations;
+import com.hackengine.entities.FriendContacts;
 import com.hackengine.entities.HomeAddress;
 import com.hackengine.entities.OfficeAddress;
 import com.hackengine.entities.Users;
+import com.hackengine.relationships.Relationships;
 import com.hackengine.tags.Tags;
 import com.hackengine.utils.SessionUtils;
 import java.io.Serializable;
@@ -24,12 +27,14 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class UserBean implements Serializable {
-    
+
     private static Users user = null;
 
     private List<HomeAddress> homeAdresses;
 
-    public List<OfficeAddress> officeAddresses;
+    private List<OfficeAddress> officeAddresses;
+
+    private List<FriendContacts> friendContacts;
 
     private Operations operations = null;
 
@@ -52,6 +57,16 @@ public class UserBean implements Serializable {
     private String ostreet;
 
     private String odoorno;
+
+    private String name;
+
+    private String surname;
+
+    private String contact;
+
+    private Relationships relationship;
+
+    private ContactType contactType;
 
     public String getOcountry() {
         return ocountry;
@@ -149,12 +164,61 @@ public class UserBean implements Serializable {
         return officeAddresses;
     }
 
+    public List<FriendContacts> getFriendContacts() {
+        return friendContacts;
+    }
+
+    public void setFriendContacts(List<FriendContacts> friendContacts) {
+        this.friendContacts = friendContacts;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public Relationships getRelationship() {
+        return relationship;
+    }
+
+    public ContactType getContactType() {
+        return contactType;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public void setRelationship(Relationships relationship) {
+        this.relationship = relationship;
+    }
+
+    public void setContactType(ContactType contactType) {
+        this.contactType = contactType;
+    }
+
     @PostConstruct
     public void init() {
         user = (Users) SessionUtils.getSession().getAttribute(Tags.LOGGED_USER);
         operations = new Operations();
         homeAdresses = Operations.getHomeAddresses(user.getID());
         officeAddresses = Operations.getOfficeAddresses(user.getID());
+        friendContacts = Operations.getFriendContacts(user.getID());
     }
 
     public String logOut() {
@@ -164,14 +228,12 @@ public class UserBean implements Serializable {
     }
 
     public void addHomeAddress() {
-        HomeAddress address = new HomeAddress(country, city, district, street, doorno);
-        operations.mapHomeAddressToUser(user, address);
+        operations.mapHomeAddressToUser(user, new HomeAddress(country, city, district, street, doorno));
         homeAdresses = Operations.getHomeAddresses(user.getID());
     }
 
     public void addOfficeAddress() {
-        OfficeAddress officeAddress = new OfficeAddress(ocountry, ocity, odistrict, ostreet, odoorno);
-        operations.mapOfficeAddressToUser(user, officeAddress);
+        operations.mapOfficeAddressToUser(user, new OfficeAddress(ocountry, ocity, odistrict, ostreet, odoorno));
         officeAddresses = Operations.getOfficeAddresses(user.getID());
     }
 
@@ -183,5 +245,23 @@ public class UserBean implements Serializable {
     public void deleteOfficeAddress(OfficeAddress address) {
         operations.deleteOfficeAddress(address);
         officeAddresses = Operations.getOfficeAddresses(user.getID());
+    }
+
+    public ContactType[] getContactTypes() {
+        return ContactType.values();
+    }
+
+    public Relationships[] getRelationships() {
+        return Relationships.values();
+    }
+
+    public void addFriendContact() {
+        operations.mapFriendContactToUser(user, new FriendContacts(name, surname, contactType, relationship, contact));
+        friendContacts = Operations.getFriendContacts(user.getID());
+    }
+
+    public void deleteFriendContact(FriendContacts friendContact) {
+        operations.deleteFriendContact(friendContact);
+        friendContacts = Operations.getFriendContacts(user.getID());
     }
 }

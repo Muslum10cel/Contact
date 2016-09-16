@@ -6,6 +6,7 @@
 package com.hackengine.dboperations;
 
 import com.hackengine.entities.ContactOfUser;
+import com.hackengine.entities.FriendContacts;
 import com.hackengine.entities.HomeAddress;
 import com.hackengine.entities.OfficeAddress;
 import com.hackengine.entities.Users;
@@ -30,10 +31,28 @@ public class Operations {
         session = factory.openSession();
     }
 
+    public static List<HomeAddress> getHomeAddresses(int id) {
+        return session.createQuery(Queries.GET_HOME_ADDRESSES).setInteger(0, id).list();
+    }
+
+    public static List<OfficeAddress> getOfficeAddresses(int id) {
+        return session.createQuery(Queries.GET_OFFICE_ADDRESSES).setInteger(0, id).list();
+    }
+
+    public static List<ContactOfUser> getUserContacts(int id) {
+        return session.createQuery(Queries.GET_USER_CONTACTS).setInteger(0, id).list();
+    }
+
+    public static List<FriendContacts> getFriendContacts(int id) {
+        return session.createQuery(Queries.GET_FRIEND_CONTACTS).setInteger(0, id).list();
+    }
+
     public String register(Users register) {
         try {
             openSession();
-            saveUserInfo(register);
+            session.beginTransaction();
+            session.save(register);
+            session.getTransaction().commit();
             System.out.println(register);
             return Tags.SUCCESS;
         } catch (Exception e) {
@@ -52,12 +71,6 @@ public class Operations {
             }
         }
         return Tags.FAIL;
-    }
-
-    private void saveUserInfo(Users u) {
-        session.beginTransaction();
-        session.save(u);
-        session.getTransaction().commit();
     }
 
     public void mapHomeAddressToUser(Users user, HomeAddress address) {
@@ -87,16 +100,13 @@ public class Operations {
         session.getTransaction().commit();
     }
 
-    public static List<HomeAddress> getHomeAddresses(int id) {
-        return session.createQuery(Queries.GET_HOME_ADDRESSES).setInteger(0, id).list();
-    }
-
-    public static List<OfficeAddress> getOfficeAddresses(int id) {
-        return session.createQuery(Queries.GET_OFFICE_ADDRESSES).setInteger(0, id).list();
-    }
-
-    public static List<ContactOfUser> getUserContacts(int id) {
-        return session.createQuery(Queries.GET_USER_CONTACTS).setInteger(0, id).list();
+    public void mapFriendContactToUser(Users user, FriendContacts friendContact) {
+        openSession();
+        session.beginTransaction();
+        session.save(friendContact);
+        friendContact.setUsers(user);
+        user.getFriendContacts().add(friendContact);
+        session.getTransaction().commit();
     }
 
     public void deleteHomeAddress(HomeAddress homeAddress) {
@@ -117,6 +127,13 @@ public class Operations {
         openSession();
         session.beginTransaction();
         session.delete(contactOfUser);
+        session.getTransaction().commit();
+    }
+
+    public void deleteFriendContact(FriendContacts friendContact) {
+        openSession();
+        session.beginTransaction();
+        session.delete(friendContact);
         session.getTransaction().commit();
     }
 

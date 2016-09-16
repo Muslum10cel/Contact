@@ -13,5 +13,6 @@
         <mapping class="com.hackengine.entities.HomeAddress"/>
         <mapping class="com.hackengine.entities.OfficeAddress"/>
         <mapping class="com.hackengine.entities.ContactOfUser"/>
+        <mapping class="com.hackengine.entities.FriendContacts"/>
     </session-factory>
 </hibernate-configuration>

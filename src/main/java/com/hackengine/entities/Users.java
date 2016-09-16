@@ -52,10 +52,13 @@ public class Users implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
     private List<OfficeAddress> officeAddress;
-    
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
     private List<ContactOfUser> contactOfUser;
-    
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = Tags.MAPPED_BY_USER)
+    private List<FriendContacts> friendContacts;
+
     public Users() {
     }
 
@@ -134,7 +137,15 @@ public class Users implements Serializable {
     public void setOfficeAddress(List<OfficeAddress> officeAddress) {
         this.officeAddress = officeAddress;
     }
-    
+
+    public List<FriendContacts> getFriendContacts() {
+        return friendContacts;
+    }
+
+    public void setFriendContacts(List<FriendContacts> friendContacts) {
+        this.friendContacts = friendContacts;
+    }
+
     @Override
     public String toString() {
         return "Users{" + "ID=" + ID + ", username=" + username + ", password=" + password + ", email=" + email + ", joinedDate=" + joinedDate + ", homeAddresses=" + homeAddresses + '}';
